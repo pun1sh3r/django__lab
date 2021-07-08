@@ -1,0 +1,32 @@
+{% extends "./base.html" %}
+
+{% load static %}
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'touristAttractions/style.css' %}">
+    {% endblock %}
+</head>
+
+{% block content %}
+  <h1>Welcome to tourist attractions</h1>
+
+<h1> This is a list of attractions in america</h1>
+
+<table>
+    <tr>
+        <th>Attraction</th>
+        <th>State</th>
+        <th>State Details</th>
+    </tr>
+    {% for item in attraction_list%}
+    <tr>
+        <th>{{ item.attractionName  }}</th>
+        <th>{{ item.homeState }}</th>
+        <th><a href="{% url 'attractiondelete' item.id %}">delete</a>
+            <a href="{% url 'attractionupdate' item.id %}">update</a>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

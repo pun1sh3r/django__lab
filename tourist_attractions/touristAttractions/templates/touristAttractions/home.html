@@ -1,0 +1,50 @@
+{% extends "./base.html" %}
+
+{% load static %}
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'touristAttractions/style.css' %}">
+    {% endblock %}
+</head>
+
+{% block content %}
+  <h1>Welcome to tourist attractions</h1>
+  <p>Welcome, {{name|lower}}!</p>
+  <!-- Add your if statement below: -->
+  {% if pets.0.animal_type == "dog" %}
+  <p>The animal is a dog </p>
+
+  {% elif pets.1.animal_type == "cat" %}
+  <p>The animal is a cat </p>
+  {% else %}
+  <p>The animal is not a dog or cat</p>
+  {% endif %}
+<br>
+<br>
+<h1>procesing for loop</h1>
+    {% for pet in pets|dictsort:"petname" %}
+<p> {{ pet.petname }}: {{pet.animal_type }} </p>
+    {% endfor %}
+
+<h1> This is a list of attractions in america</h1>
+
+<table>
+    <tr>
+        <th>Attraction</th>
+        <th>State</th>
+        <th>State Details</th>
+    </tr>
+    {% for item in state_list|dictsort:"stateName"%}
+    <tr>
+        <th>{{ item.stateName }}</th>
+        <th>{{ item.stateAbbreviation }}</th>
+        <th><a href="{% url 'statedelete' item.id %}">delete</a>
+            <a href="{% url 'stateupdate' item.id %}">update</a>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+<a href ="{% url 'statecreate' %}">add a state</a>
+<a href ="{% url 'attractioncreate' %}">add a attraction</a>
+{% endblock %}
+

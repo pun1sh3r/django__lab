@@ -1,0 +1,28 @@
+{% extends "touristAttractions/base.html" %}
+
+{% load static %}
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'touristAttractions/style.css' %}">
+    {% endblock %}
+</head>
+
+{% block content %}
+
+<h1> This is a list of tourist attractions for {{ statename }}</h1>
+<table>
+    <tr>
+        <th>Attraction</th>
+        <th>State</th>
+    </tr>
+    {% for item in attractions|dictsort:"state" %}
+    <tr>
+        {% if item.state|lower == statename|lower  %}
+        <th>{{ item.attraction_name }}</th>
+        <th>{{ item.state }}</th>
+        {% endif %}
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}
