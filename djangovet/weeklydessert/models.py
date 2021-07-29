@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.db import models
 
 class Week(models.Model):
-  pub_date = models.DateTimeField("date published")
+  pub_date = models.DateTimeField("date published ")
 
   def start_of_week(self):
       today = datetime.date.today()
