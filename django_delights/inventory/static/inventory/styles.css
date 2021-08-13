@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFF5FF;
+  margin-left: 10px;
+}
+
+.header-title {
+  margin-bottom: 0;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-greet {
+  width: 100%;
+}
+
+.poll-link {
+  text-decoration: none;
+}
+
+.vote-block {
+  margin-left: 20px;
+  width: 100%;
+}
+
+table,th,td {
+  border: 1px solid black
+}
+.table-style {
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+main table th {
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+.line-table li {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  border-radius: 1em;
+  background: dodgerblue;
+  margin: 0 1em;
+  display: inline-block;
+  color: white;
+  position: relative;
+}
+
+.line-table li::before {
+  content: "";
+  position: absolute;
+  top: 0.9em;
+  left: -4em;
+  width: 4em;
+  height: 0.2em;
+  background: dodgerblue;
+  z-index: -1;
+}
+
+li + div {
+  display: none;
+}
+
+li:hover {
+  background-color: lightblue;
+}
+
+li:hover + div {
+  display: inline-block;
+  background-color: white;
+  padding: 5px;
+  margin-left: 0px;
+  font-size: 0.8em;
+  color: dodgerblue;
+  border: 2px dashed lightblue;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.line-table li:first-child::before {
+  display: none;
+}
+
+.line-table ul {
+  padding: 0;
+}

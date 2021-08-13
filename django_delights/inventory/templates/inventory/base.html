@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<head>
+      <link rel="stylesheet" type="text/css" href="{% static 'inventory/style_1.css' %}" />
+</head>
+
+<body>
+
+<div class="app">
+    <header>
+        <div class="header-first-row">
+      <h1 class="title">Django Delights</h1>
+      {% if user.is_authenticated %}
+      <a class="logout" href="/logout">Logout</a>
+      {% endif %}
+    </div>
+        {% if user.is_authenticated %}
+      <p>Hi, {{ user.username }}!</p>
+        <nav class="navbar">
+            <a href="{% url  'home' %}">Home</a>
+            <a href="{% url 'inventory' %}">Inventory</a>
+            <a href="{% url 'menulist' %}">Menu</a>
+            <a href="{% url 'purchaselist' %}">Purchases</a>
+            <a href="{% url 'reports' %}">Reports</a>
+        </nav>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</div>
+
+</body>
+</html>
+

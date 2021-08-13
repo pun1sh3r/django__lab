@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+<head>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/redmond/jquery-ui.css" rel="Stylesheet" />
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+</head>
+
+
+
+{% block content %}
+<h2>Add Order</h2>
+<form method="post">
+    <div>
+
+  {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+  <input type="submit" value="Submit" />
+    </div>
+
+
+</form>
+{% endblock %}
+
+<script type="text/javascript">
+   jQuery(function() {
+       jQuery("#id_timestamp").datepicker();
+   });
+</script>

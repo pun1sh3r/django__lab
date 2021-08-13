@@ -1,0 +1,26 @@
+ {% extends './base.html' %}  {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'inventory/styles.css' %}">
+
+{% block title %} Django delights inventory system {% endblock %}
+{% block content %}
+<h1>Purchase List</h1>
+<p><a  href="{% url 'orderadd' %}">Record a new order</a></p>
+<table>
+    <tr>
+        <th>Order</th>
+        <th>Order Price</th>
+        <th>Date</th>
+    </tr>
+    {% for o in purchase_list %}
+    <tr>
+        <td>{{ o.menu_item.title }}</td>
+        <td>{{ o.menu_item.price }}</td>
+        <td>{{ o.timestamp }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock %}

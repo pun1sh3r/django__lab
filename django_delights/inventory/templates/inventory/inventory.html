@@ -1,0 +1,28 @@
+ {% extends './base.html' %}  {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'inventory/styles.css' %}">
+
+{% block title %} Django delights inventory system {% endblock %}
+{% block content %}
+<h1>Inventory List</h1>
+
+<table>
+    <tr>
+        <th>Ingredient Name</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Unit Price</th>
+        <th>delete</th>
+    </tr>
+    {% for i in ingredient_list %}
+    <tr>
+        <td><a href="{% url 'ingredientedit' i.id %}">{{ i.name }}</a> </td>
+        <td>{{ i.quantity }}</td>
+        <td>{{ i.unit }}</td>
+        <td>{{ i.unit_price }}</td>
+        <td><a href="{% url 'ingredientdelete' i.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

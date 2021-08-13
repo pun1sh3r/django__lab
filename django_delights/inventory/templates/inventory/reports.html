@@ -1,0 +1,18 @@
+{% extends './base.html' %}  {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'inventory/styles.css' %}">
+
+{% block title %} Django delights inventory system {% endblock %}
+{% block content %}
+<h1>Report list</h1>
+
+<div style="color: green;">
+    Total Revenue: {{ total_revenue }}
+</div>
+<div style="color: red;">
+    Total Cost: {{ cost }}
+</div>
+<div style="color: blue;">
+    Total Profit: {{ profit }}
+</div>
+
+{% endblock %}

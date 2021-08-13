@@ -1,0 +1,83 @@
+{% extends './base.html' %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'inventory/styles.css' %}">
+{% block title %} Django delights inventory system {% endblock %}
+{% block content %}
+    <div class="home">
+        <div>
+            <h2>Ingredients</h2>
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Unit Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for ingredient in ingredients %}
+                    <tr>
+                        <td>{{ ingredient.name }}</td>
+                        <td>{{ ingredient.quantity }}</td>
+                        <td>{{ ingredient.unit }}</td>
+                        <td class="price">${{ ingredient.unit_price|stringformat:".2f" }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      <hr/>
+
+      <div>
+            <h2>Purchases</h2>
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Menu Item</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for purchase in purchases %}
+                    <tr>
+                        <td>{{ purchase.menu_item.title }}</td>
+                        <td class="price">${{ purchase.menu_item.price|stringformat:".2f" }}</td>
+                        <td>{{ purchase.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <hr/>
+            <div>
+            <h2>Menu</h2>
+        <table>
+    <tr>
+        <th>Menu Item</th>
+        <th>Price</th>
+        <th>Ingredients</th>
+    </tr>
+    {% for menu_item in menu_items %}
+    <tr>
+        <td>{{ menu_item.title }}</td>
+        <td>${{ menu_item.price }}</td>
+        <td>
+            {% for recipe_req in menu_item.reciperequirement_set.all %}
+
+            <p>{{ recipe_req.quantity }} {{ recipe_req.ingredient.name }}
+
+            {% endfor %}
+        </td>
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+        </div>
+    </div>
+
+
+{% endblock %}

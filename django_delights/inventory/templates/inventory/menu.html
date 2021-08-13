@@ -1,0 +1,35 @@
+ {% extends './base.html' %}  {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'inventory/styles.css' %}">
+
+{% block title %} Django delights inventory system {% endblock %}
+{% block content %}
+<h2>Menu Item List</h2>
+<p><a  href="{% url 'menuitemadd' %}">Add Menu item </a></p>
+ <p><a  href="{% url 'recipeadd' %}">Add Recipe Requirement </a></p>
+<hr/>
+<table>
+    <tr>
+        <th>Menu Item</th>
+        <th>Price</th>
+        <th>Ingredients</th>
+    </tr>
+    {% for menu_item in object_list %}
+    <tr>
+        <td>{{ menu_item.title }}</td>
+        <td>${{ menu_item.price }}</td>
+        <td>
+            {% for recipe_req in menu_item.reciperequirement_set.all %}
+
+            <p>{{ recipe_req.quantity }} {{ recipe_req.ingredient.name }}
+
+            {% endfor %}
+        </td>
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+
+{% endblock %}
